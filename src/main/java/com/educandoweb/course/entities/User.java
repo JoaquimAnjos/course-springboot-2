@@ -11,11 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable {
 	
-// quando quero que objetos sejam transformaos em cadeias de Bytes
+// quando quero que objetos sejam transformados em cadeias de Bytes
 //Para o objeto trafegar na rede, ser armazenado em arquivos, etc
 	private static final long serialVersionUID = 1L;
 	
@@ -27,6 +29,7 @@ public class User implements Serializable {
 	private String phone;
 	private String password;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")// client é o nome do atributo da classe Order
 	private List<Order> orders = new ArrayList<>();
 	
